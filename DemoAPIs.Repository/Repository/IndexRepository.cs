@@ -113,6 +113,7 @@ namespace DemoAPIs.Repository.Repository
         }
         #endregion
 
+        #region Validate JWT Token without LifeTime
         public string ValidateTokenWithoutLifeTime(string accessToken)
         {
             JwtToken jwt = new JwtToken();
@@ -121,12 +122,16 @@ namespace DemoAPIs.Repository.Repository
             email = token.Claims.FirstOrDefault(e => e.Type == ClaimTypes.Email).Value;
             return email;
         }
+        #endregion
 
+        #region Check Email Exists
         public bool EmailExists(string email)
         {
             return _context.Users.Any(e => e.Email == email);
         }
+        #endregion
 
+        #region Generate Forgot Token
         public ForgotToken GenerateForgotToken(ForgotPasswordViewModel model)
         {
             if (_context.Users.Any(e => e.Email == model.email))
@@ -149,7 +154,9 @@ namespace DemoAPIs.Repository.Repository
                 return token;
             }
         }
+        #endregion
 
+        #region Validate Forgot Token
         public bool ValidateForgotToken(string token, string email)
         {
             //2nd condition is :- token's Forgottokenexpiry < DateTime.UtcNow, Forgottokenexpiry will get from the DB from token.
@@ -163,7 +170,9 @@ namespace DemoAPIs.Repository.Repository
             }
             return false;
         }
+        #endregion
 
+        #region Reset Password Operation
         public bool ResetPassword(ResetPasswordViewModel model)
         {
             User user = _context.Users.FirstOrDefault(e => e.Email == model.Email);
@@ -178,5 +187,6 @@ namespace DemoAPIs.Repository.Repository
             }
             return false;
         }
+        #endregion
     }
 }
