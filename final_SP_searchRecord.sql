@@ -79,7 +79,7 @@ SELECT * FROM SearchRecord(
     requesttype := 0,
     fromDOS := NULL,
     toDOS := NULL,
-    providername := 'as',
+    providername := NULL,
     emailid := NULL,
     mobilephone := NULL,
 	page := 0,
