@@ -1,5 +1,5 @@
-﻿using AppointmentRemainder.Data;
-using Microsoft.Extensions.DependencyInjection;
+﻿//using AppointmentRemainder.Data;
+//using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,18 +16,18 @@ namespace AppointmentRemainder
         /// </summary>
         static void Main()
         {
-            var services = new ServiceCollection();
-            services.AddDbContext<ApplicationDBContext>();
-            services.AddSingleton<ServiceBase, AppointmentRemainder>();
-            var serviceProvider = services.BuildServiceProvider();
-            ServiceBase.Run(serviceProvider.GetRequiredService<ServiceBase>());
+            //var services = new ServiceCollection();
+            //services.AddDbContext<ApplicationDBContext>();
+            //services.AddSingleton<ServiceBase, AppointmentRemainder>();
+            //var serviceProvider = services.BuildServiceProvider();
+            //ServiceBase.Run(serviceProvider.GetRequiredService<ServiceBase>());
 
-            //ServiceBase[] ServicesToRun;
-            //ServicesToRun = new ServiceBase[]
-            //{
-            //    new AppointmentRemainder()
-            //};
-            //ServiceBase.Run(ServicesToRun);
+            ServiceBase[] ServicesToRun;
+            ServicesToRun = new ServiceBase[]
+            {
+                new AppointmentRemainder()
+            };
+            ServiceBase.Run(ServicesToRun);
         }
     }
 }
